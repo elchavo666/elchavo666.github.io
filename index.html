@@ -13,12 +13,19 @@
             font-family: 'Inter', sans-serif;
         }
 
+        /* Video Arka Plan Ayarları */
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            filter: brightness(40%); /* Videoyu karartarak yazıların okunmasını sağlar */
+        }
+
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('https://r.resimlink.com/7L4vK.jpg'); 
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -26,14 +33,16 @@
             align-items: center;
             color: white;
             text-align: center;
+            overflow: hidden;
         }
 
         .header-title {
-            font-size: 85px; /* Görseldeki devasa başlık */
+            font-size: 85px;
             color: #ff5b6e; 
             font-weight: 900; 
             letter-spacing: -3px;
             margin-bottom: 5px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
         .sub-title {
@@ -68,7 +77,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.25s ease-in-out;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
         .btn:hover {
@@ -77,7 +86,6 @@
             box-shadow: 0 8px 20px rgba(255, 91, 110, 0.4);
         }
 
-        /* Beyaz İndirme İkonu */
         .btn::before {
             content: "";
             display: inline-block;
@@ -91,6 +99,11 @@
     </style>
 </head>
 <body>
+
+    <video autoplay muted loop id="bg-video">
+        <source src="resources/videos/showcase.mp4" type="video/mp4">
+        Tarayıcınız video etiketini desteklemiyor.
+    </video>
 
     <div class="header-title">Chavo Product</div>
     <div class="sub-title">A Minecraft 1.8x Internal Cheat</div>
