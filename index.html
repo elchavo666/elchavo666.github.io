@@ -62,10 +62,48 @@
             border-radius: 5px;
             width: 230px;
             border-right: 3px solid #ff5b6e;
-            z-index: 10;
+            z-index: 20;
+            transition: all 0.3s ease;
         }
 
-        .side-menu h4 { color: #ff5b6e; margin-bottom: 15px; font-size: 16px; letter-spacing: 2px; border-bottom: 1px solid #333; padding-bottom: 5px; }
+        /* Mobil Uyum İçin Menü Başlığı Değişimi */
+        .side-menu h4 { 
+            color: #ff5b6e; 
+            margin-bottom: 15px; 
+            font-size: 16px; 
+            letter-spacing: 2px; 
+            border-bottom: 1px solid #333; 
+            padding-bottom: 5px; 
+            cursor: pointer; /* Tıklanabilir yaptık */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Liste Gizleme/Gösterme Mantığı */
+        .side-menu ul, .side-menu .server-tag {
+            display: block; /* Varsayılan açık */
+        }
+
+        /* Menü Kapalıyken (Mobil için JS ile kontrol edilecek) */
+        .side-menu.collapsed ul, .side-menu.collapsed .server-tag {
+            display: none;
+        }
+        
+        .side-menu.collapsed {
+            width: 200px;
+            padding: 10px 20px;
+        }
+
+        .side-menu h4::after {
+            content: '▼';
+            font-size: 10px;
+            transition: 0.3s;
+        }
+        .side-menu.collapsed h4::after {
+            content: '▲';
+        }
+
         .side-menu ul { list-style: none; }
         .side-menu li { 
             font-size: 14px; 
@@ -106,7 +144,7 @@
 
         /* Ana Icerik */
         .header-title {
-            font-size: clamp(50px, 12vw, 110px);
+            font-size: clamp(40px, 10vw, 110px);
             color: #ff5b6e;
             font-weight: 900;
             letter-spacing: -6px;
@@ -115,14 +153,14 @@
         }
 
         .sub-title { font-size: 14px; opacity: 0.7; letter-spacing: 6px; font-weight: 300; text-transform: uppercase; }
-        .download-heading { font-size: 45px; font-weight: 700; margin-bottom: 30px; letter-spacing: 3px; }
+        .download-heading { font-size: clamp(30px, 5vw, 45px); font-weight: 700; margin-bottom: 30px; letter-spacing: 3px; }
         .btn-list { display: flex; flex-direction: column; gap: 15px; }
 
         .btn {
             background-color: #ff5b6e;
             color: white;
             text-decoration: none;
-            padding: 20px 80px;
+            padding: 15px 40px;
             border-radius: 3px;
             font-size: 18px;
             font-weight: 900;
@@ -131,7 +169,7 @@
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
-            min-width: 350px;
+            min-width: 280px;
             display: inline-block;
         }
 
@@ -140,6 +178,13 @@
             color: #ff5b6e;
             box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
             transform: scale(1.05);
+        }
+
+        /* Telefonlar İçin Küçük Ayarlar */
+        @media screen and (max-width: 768px) {
+            .side-menu { top: 70px; right: 10px; width: 180px; }
+            .top-info { font-size: 11px; padding: 8px 12px; }
+            .btn { min-width: 250px; padding: 15px 20px; }
         }
     </style>
 </head>
@@ -153,8 +198,8 @@
         Chavo+ | FPS: <span id="fps">144</span> | <span id="clock">00:00:00</span>
     </div>
 
-    <div class="side-menu">
-        <h4>CLIENT MODULES</h4>
+    <div class="side-menu" id="sideMenu">
+        <h4 onclick="toggleMenu()">CLIENT MODULES</h4>
         <ul id="moduleList">
             <li class="active" onclick="this.classList.toggle('active')">Killaura</li>
             <li class="active" onclick="this.classList.toggle('active')">Velocity</li>
@@ -183,6 +228,17 @@
     </div>
 
     <script>
+        // Menü Aç/Kapat Fonksiyonu
+        function toggleMenu() {
+            const menu = document.getElementById('sideMenu');
+            menu.classList.toggle('collapsed');
+        }
+
+        // Telefonda girildiğinde menüyü otomatik kapalı başlat
+        if (window.innerWidth < 768) {
+            document.getElementById('sideMenu').classList.add('collapsed');
+        }
+
         function updateClock() {
             const now = new Date();
             document.getElementById('clock').innerText = now.toLocaleTimeString();
