@@ -22,7 +22,7 @@
             background-color: #050505;
         }
 
-        /* Video Ayarlari - Tam Ekran Kaplar ve Tasmaz */
+        /* Video Ayarlari */
         #bg-video {
             position: fixed;
             top: 50%;
@@ -77,6 +77,26 @@
         .side-menu li.active { color: #7aff7a; font-weight: bold; }
         .side-menu li.active::after { content: '[ON]'; font-size: 10px; }
 
+        /* RGB Animasyonu Tanımı */
+        @keyframes rgb-flow {
+            0% { color: #ff0000; text-shadow: 0 0 8px #ff0000; }
+            20% { color: #ff8800; text-shadow: 0 0 8px #ff8800; }
+            40% { color: #ffff00; text-shadow: 0 0 8px #ffff00; }
+            60% { color: #00ff00; text-shadow: 0 0 8px #00ff00; }
+            80% { color: #0088ff; text-shadow: 0 0 8px #0088ff; }
+            100% { color: #ff0000; text-shadow: 0 0 8px #ff0000; }
+        }
+
+        /* Güncellenen RGB Bölümü */
+        .server-tag {
+            margin-top: 25px;
+            font-weight: 900;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: rgb-flow 3s linear infinite; /* 3 saniyede bir renk döner */
+        }
+
         /* Ana Icerik */
         .header-title {
             font-size: clamp(50px, 12vw, 110px);
@@ -88,9 +108,7 @@
         }
 
         .sub-title { font-size: 14px; opacity: 0.7; margin-bottom: 60px; letter-spacing: 6px; font-weight: 300; text-transform: uppercase; }
-
         .download-heading { font-size: 45px; font-weight: 700; margin-bottom: 30px; letter-spacing: 3px; }
-
         .btn-list { display: flex; flex-direction: column; gap: 15px; }
 
         /* Buton Tasarimlari */
@@ -108,6 +126,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             min-width: 350px;
+            display: inline-block;
         }
 
         .btn:hover {
@@ -115,14 +134,6 @@
             color: #ff5b6e;
             box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
             transform: scale(1.05);
-        }
-
-        .server-tag {
-            margin-top: 25px;
-            color: #7aff7a;
-            font-weight: bold;
-            font-size: 12px;
-            letter-spacing: 3px;
         }
     </style>
 </head>
@@ -163,6 +174,7 @@
     </div>
 
     <script>
+        // Saat Güncelleme
         function updateClock() {
             const now = new Date();
             document.getElementById('clock').innerText = now.toLocaleTimeString();
@@ -170,6 +182,7 @@
         setInterval(updateClock, 1000);
         updateClock();
 
+        // FPS Simülasyonu
         setInterval(() => {
             const fps = Math.floor(Math.random() * (144 - 136 + 1)) + 136;
             document.getElementById('fps').innerText = fps;
