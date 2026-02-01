@@ -6,6 +6,7 @@
     <title>Chavo Product | High-End Cheat</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
+        /* Genel Ayarlar */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; cursor: default; }
 
         body {
@@ -21,17 +22,17 @@
             background-color: #050505;
         }
 
-        /* Video Arka Plan */
+        /* Arka Plan Videosu */
         #bg-video {
             position: fixed;
             right: 0; bottom: 0;
             min-width: 100%; min-height: 100%;
             z-index: -2;
             object-fit: cover;
-            filter: brightness(0.3);
+            filter: brightness(0.4); /* Videoyu karartır, yazılar okunur */
         }
 
-        /* Üst Bilgi Paneli */
+        /* Sol Üst Bilgi Paneli */
         .top-info {
             position: absolute;
             top: 20px; left: 20px;
@@ -42,6 +43,7 @@
             border-bottom: 2px solid #ff5b6e;
             text-transform: uppercase;
             letter-spacing: 1px;
+            z-index: 10;
         }
 
         /* Sağ Hile Menüsü */
@@ -54,6 +56,7 @@
             border-radius: 5px;
             width: 220px;
             border-right: 3px solid #ff5b6e;
+            z-index: 10;
         }
 
         .side-menu h4 { color: #ff5b6e; margin-bottom: 15px; font-size: 16px; letter-spacing: 2px; }
@@ -68,57 +71,56 @@
         .side-menu li:hover { color: #fff; transform: translateX(-5px); }
         .side-menu li.active { color: #7aff7a; font-weight: bold; text-shadow: 0 0 10px rgba(122, 255, 122, 0.5); }
 
-        /* Ana Başlık Alanı */
+        /* Ana İçerik */
         .header-title {
-            font-size: 90px;
+            font-size: clamp(60px, 10vw, 100px);
             color: #ff5b6e;
             font-weight: 900;
-            letter-spacing: -4px;
-            text-shadow: 0 0 20px rgba(255, 91, 110, 0.4);
+            letter-spacing: -5px;
+            text-shadow: 0 0 30px rgba(255, 91, 110, 0.6);
             margin-bottom: 0;
         }
 
-        .sub-title { font-size: 16px; opacity: 0.6; margin-bottom: 60px; letter-spacing: 3px; }
+        .sub-title { font-size: 14px; opacity: 0.6; margin-bottom: 40px; letter-spacing: 5px; font-weight: 300; }
 
-        /* İndirme Bölümü */
-        .download-heading { font-size: 60px; font-weight: 700; margin-bottom: 35px; }
+        .download-heading { font-size: 40px; font-weight: 700; margin-bottom: 30px; letter-spacing: 2px; }
 
-        .btn-list { display: flex; flex-direction: column; gap: 20px; }
+        .btn-list { display: flex; flex-direction: column; gap: 15px; }
 
         .btn {
             background-color: #ff5b6e;
             color: white;
             text-decoration: none;
-            padding: 18px 85px;
-            border-radius: 4px;
-            font-size: 18px;
+            padding: 18px 80px;
+            border-radius: 2px;
+            font-size: 16px;
             font-weight: 900;
             transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
             border: none;
             cursor: pointer;
+            text-transform: uppercase;
         }
 
         .btn:hover {
-            background-color: #ff3a51;
-            box-shadow: 0 0 30px rgba(255, 91, 110, 0.6);
-            transform: scale(1.02);
+            background-color: #fff;
+            color: #ff5b6e;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
         }
 
         .server-tag {
             margin-top: 20px;
-            color: #ff5b6e;
+            color: #7aff7a;
             font-weight: bold;
-            font-size: 14px;
-            letter-spacing: 1px;
+            font-size: 12px;
+            letter-spacing: 2px;
         }
     </style>
 </head>
 <body>
 
-    <video autoplay muted loop id="bg-video">
-        <source src="resources/videos/showcase.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="resources/videos/video.mp4" type="video/mp4">
     </video>
 
     <div class="top-info">
@@ -131,10 +133,9 @@
             <li class="active" onclick="this.classList.toggle('active')">Killaura</li>
             <li class="active" onclick="this.classList.toggle('active')">Velocity</li>
             <li class="active" onclick="this.classList.toggle('active')">PlayerESP</li>
-            <li onclick="this.classList.toggle('active')">Fly</li>
+            <li onclick="this.classList.toggle('active')">Aimbot</li>
+            <li onclick="this.classList.toggle('active')">Fly [Bypass]</li>
             <li onclick="this.classList.toggle('active')">ChestStealer</li>
-            <li onclick="this.classList.toggle('active')">Scaffold</li>
-            <li onclick="this.classList.toggle('active')">NoFall</li>
         </ul>
         <div class="server-tag">SONOYUNCU.NETWORK</div>
     </div>
@@ -146,22 +147,23 @@
         <h2 class="download-heading">DOWNLOAD</h2>
 
         <div class="btn-list">
-            <a href="#" class="btn">CHAVO_V1.DLL</a>
-            <a href="#" class="btn">CHAVO_LITE.DLL</a>
+            <a href="ChavoPlus.dll" class="btn">CHAVO_V1.DLL</a>
+            <a href="Chavo0.7.dll" class="btn">CHAVO_0.7.DLL</a>
         </div>
     </div>
 
     <script>
-        // Canlı Saat Fonksiyonu
+        // Gerçek zamanlı saat
         function updateClock() {
             const now = new Date();
             document.getElementById('clock').innerText = now.toLocaleTimeString();
         }
         setInterval(updateClock, 1000);
+        updateClock();
 
-        // Sahte FPS Dalgalanması
+        // Rastgele FPS dalgalanması (138-144 arası)
         setInterval(() => {
-            const fps = Math.floor(Math.random() * (144 - 138 + 1)) + 138;
+            const fps = Math.floor(Math.random() * (145 - 138 + 1)) + 138;
             document.getElementById('fps').innerText = fps;
         }, 500);
     </script>
