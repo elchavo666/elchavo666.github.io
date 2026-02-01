@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chavo Product | Premium Minecraft Cheat</title>
+    <title>Chavo Product | High-End Cheat</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Genel Sifirlama */
+        /* Temel Sifirlama */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; cursor: default; }
 
         body {
@@ -22,7 +22,7 @@
             background-color: #050505;
         }
 
-        /* Video Arka Plan - Ekrana Tam Oturan ve Tasmayan Ayar */
+        /* Video Ayarlari - Tam Ekran Kaplar ve Tasmaz */
         #bg-video {
             position: fixed;
             top: 50%;
@@ -34,10 +34,10 @@
             z-index: -2;
             transform: translate(-50%, -50%);
             object-fit: cover;
-            filter: brightness(0.35); /* Arka plani karartir ki yazilar netlessin */
+            filter: brightness(0.35);
         }
 
-        /* Sol Ust Bilgi Paneli */
+        /* Bilgi Panelleri */
         .top-info {
             position: absolute;
             top: 20px; left: 20px;
@@ -51,7 +51,6 @@
             z-index: 10;
         }
 
-        /* Sag Hile Menusu */
         .side-menu {
             position: absolute;
             top: 20px; right: 20px;
@@ -75,13 +74,10 @@
             display: flex;
             justify-content: space-between;
         }
-        .side-menu li:hover { color: #fff; transform: translateX(-5px); }
-        .side-menu li.active { color: #7aff7a; font-weight: bold; text-shadow: 0 0 10px rgba(122, 255, 122, 0.5); }
-        .side-menu li.active::after { content: '[ON]'; font-size: 10px; margin-left: 10px; }
+        .side-menu li.active { color: #7aff7a; font-weight: bold; }
+        .side-menu li.active::after { content: '[ON]'; font-size: 10px; }
 
         /* Ana Icerik */
-        .content-wrapper { z-index: 5; }
-
         .header-title {
             font-size: clamp(50px, 12vw, 110px);
             color: #ff5b6e;
@@ -97,19 +93,21 @@
 
         .btn-list { display: flex; flex-direction: column; gap: 15px; }
 
+        /* Buton Tasarimlari */
         .btn {
             background-color: #ff5b6e;
             color: white;
             text-decoration: none;
-            padding: 20px 100px;
+            padding: 20px 80px;
             border-radius: 3px;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 900;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: none;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            min-width: 350px;
         }
 
         .btn:hover {
@@ -159,13 +157,12 @@
         <h2 class="download-heading">DOWNLOAD</h2>
 
         <div class="btn-list">
-            <a href="ChavoPlus.dll" class="btn">CHAVO_V1.DLL</a>
-            <a href="ChavoLite.dll" class="btn">CHAVO_LITE.DLL</a>
+            <a href="ChavoPlus.dll" class="btn">Chavo+.dll</a>
+            <a href="ChavoPremiumPlus.dll" class="btn">Chavo.Premium+</a>
         </div>
     </div>
 
     <script>
-        // Saat Fonksiyonu
         function updateClock() {
             const now = new Date();
             document.getElementById('clock').innerText = now.toLocaleTimeString();
@@ -173,7 +170,6 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        // FPS Dalgalanma Efekti
         setInterval(() => {
             const fps = Math.floor(Math.random() * (144 - 136 + 1)) + 136;
             document.getElementById('fps').innerText = fps;
