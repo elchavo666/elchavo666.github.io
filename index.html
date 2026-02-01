@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chavo Product | Download</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                        url('https://r.resimlink.com/7L4vK.jpg'); /* Minecraft Arka Plan */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://r.resimlink.com/7L4vK.jpg'); 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -28,24 +29,25 @@
         }
 
         .header-title {
-            font-size: 70px;
-            color: #ff5b6e; /* Resimdeki kırmızı tonu */
-            font-weight: bold;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            font-size: 85px; /* Görseldeki devasa başlık */
+            color: #ff5b6e; 
+            font-weight: 900; 
+            letter-spacing: -3px;
             margin-bottom: 5px;
         }
 
         .sub-title {
             font-size: 22px;
-            font-weight: 300;
+            font-weight: 400;
             margin-bottom: 50px;
-            letter-spacing: 1px;
+            opacity: 0.95;
+            letter-spacing: 0.5px;
         }
 
         .download-heading {
-            font-size: 65px;
-            font-weight: bold;
-            margin-bottom: 30px;
+            font-size: 70px;
+            font-weight: 700;
+            margin-bottom: 40px;
         }
 
         .btn-list {
@@ -58,25 +60,33 @@
             background-color: #ff5b6e;
             color: white;
             text-decoration: none;
-            padding: 12px 60px;
-            border-radius: 12px;
-            font-size: 20px;
-            font-weight: bold;
+            padding: 15px 80px;
+            border-radius: 10px;
+            font-size: 19px;
+            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: 0.3s;
+            transition: all 0.25s ease-in-out;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .btn:hover {
             background-color: #e04a5c;
-            transform: scale(1.05);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(255, 91, 110, 0.4);
         }
 
+        /* Beyaz İndirme İkonu */
         .btn::before {
-            content: "📥"; /* İndirme ikonu */
-            margin-right: 10px;
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 15px;
         }
     </style>
 </head>
@@ -88,7 +98,7 @@
     <div class="download-heading">Download</div>
 
     <div class="btn-list">
-        <a href="Chavo+.dll" class="btn">Chavo+.dll</a>
+        <a href="ChavoPlus.dll" class="btn">Chavo+.dll</a>
         <a href="Chavo0.7.dll" class="btn">Chavo0.7.dll</a>
     </div>
 
