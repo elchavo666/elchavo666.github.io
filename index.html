@@ -1,28 +1,19 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chavo Product | Download</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
+        /* Genel Reset ve Font Ayarları */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Video Arka Plan Ayarları */
-        #bg-video {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -1;
-            object-fit: cover;
-            filter: brightness(40%); /* Videoyu karartarak yazıların okunmasını sağlar */
+            font-family: 'Roboto', sans-serif; /* Sitedeki fontu yakalamak için Roboto kullandık */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
@@ -31,61 +22,105 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: white;
+            color: #fff;
             text-align: center;
-            overflow: hidden;
+            overflow: hidden; /* Taşmaları engelle */
+            position: relative;
+        }
+
+        /* Arka Plan Videosu */
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            filter: brightness(0.4); /* Resimdeki gibi daha koyu bir video arka planı */
+        }
+
+        /* Header Üst Bilgi (FPS, Sürüm vs.) */
+        .top-info {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #fff;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .top-info span {
+            color: #7aff7a; /* Yeşil renk */
+        }
+        .top-info .version {
+            color: #fff;
+            font-weight: 700;
+        }
+        .top-info .red {
+            color: #ff5e62; /* Kırmızı renk */
+        }
+
+        /* Main Content */
+        .content-wrapper {
+            z-index: 1; /* Video'nun üstünde görünmesini sağla */
         }
 
         .header-title {
-            font-size: 85px;
-            color: #ff5b6e; 
-            font-weight: 900; 
-            letter-spacing: -3px;
+            font-size: 80px;
+            color: #ff5b6e; /* Ana başlıktaki kırmızı renk */
+            font-weight: 900;
+            letter-spacing: -2px;
             margin-bottom: 5px;
             text-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
         .sub-title {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 400;
-            margin-bottom: 50px;
-            opacity: 0.95;
-            letter-spacing: 0.5px;
+            margin-bottom: 60px; /* Butonlarla arasındaki boşluk */
+            opacity: 0.9;
         }
 
         .download-heading {
-            font-size: 70px;
+            font-size: 60px; /* Download yazısının boyutu */
             font-weight: 700;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .btn-list {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 15px; /* Butonlar arası boşluk */
         }
 
         .btn {
-            background-color: #ff5b6e;
+            background-color: #ff5b6e; /* Buton arka plan rengi */
             color: white;
             text-decoration: none;
-            padding: 15px 80px;
-            border-radius: 10px;
+            padding: 15px 80px; /* Buton iç boşlukları */
+            border-radius: 10px; /* Buton köşeleri */
             font-size: 19px;
             font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.25s ease-in-out;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Buton gölgesi */
         }
 
         .btn:hover {
-            background-color: #e04a5c;
-            transform: translateY(-4px);
+            background-color: #e04a5c; /* Hover rengi */
+            transform: translateY(-4px); /* Hoverda yukarı kaydırma */
             box-shadow: 0 8px 20px rgba(255, 91, 110, 0.4);
         }
 
+        /* Beyaz İndirme İkonu */
         .btn::before {
             content: "";
             display: inline-block;
@@ -105,14 +140,20 @@
         Tarayıcınız video etiketini desteklemiyor.
     </video>
 
-    <div class="header-title">Chavo Product</div>
-    <div class="sub-title">A Minecraft 1.8x Internal Cheat</div>
+    <div class="top-info">
+        Noise+ | fps: <span>120</span> | time: <span class="red">16:50:44</span> | <span class="version">version: v1.6.8</span>
+    </div>
 
-    <div class="download-heading">Download</div>
+    <div class="content-wrapper">
+        <div class="header-title">Chavo Product</div>
+        <div class="sub-title">A Minecraft 1.8x Internal Cheat</div>
 
-    <div class="btn-list">
-        <a href="ChavoPlus.dll" class="btn">Chavo+.dll</a>
-        <a href="Chavo0.7.dll" class="btn">Chavo0.7.dll</a>
+        <div class="download-heading">Download</div>
+
+        <div class="btn-list">
+            <a href="ChavoPlus.dll" class="btn">Chavo+.dll</a>
+            <a href="Chavo0.7.dll" class="btn">Chavo0.7.dll</a>
+        </div>
     </div>
 
 </body>
